@@ -42,9 +42,11 @@
   --bs-danger: #dc3545;
   --bs-light: #f8f9fa;
   --bs-dark: #212529;
-  --bs-primary-rgb: 87, 197, 182;
-  --bs-secondary-rgb: 21, 152, 149; 
-  --bs-success-rgb: 26, 95, 122;
+  /* The primary colors */
+  --bs-primary-rgb: 96, 150, 180;
+  --bs-secondary-rgb: 147, 191, 207; 
+  --bs-success-rgb: 189, 205, 214;
+
   --bs-info-rgb: 0, 43, 91;
   --bs-warning-rgb: 255, 193, 7;
   --bs-danger-rgb: 220, 53, 69;
@@ -10938,7 +10940,8 @@ p.lead {
   margin-right: 0;
 }
 .social-icons .social-icon:hover {
-  background-color: #bd5d38;
+  /* EEE9DA */
+  background-color: #EEE9DA;
 }
 
 .dev-icons {
