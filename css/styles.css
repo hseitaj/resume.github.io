@@ -448,6 +448,65 @@ legend + * {
   -webkit-appearance: textfield;
 }
 
+.cd-headline {
+  font-size: 24px;
+  font-weight: bold;
+}
+
+.cd-words-wrapper {
+  display: inline-block;
+  position: relative;
+  white-space: nowrap;
+  overflow: hidden;
+  vertical-align: top;
+}
+
+.cd-words-wrapper b {
+  display: inline-block;
+  position: absolute;
+  white-space: nowrap;
+}
+
+.cd-headline.clip .cd-words-wrapper {
+  overflow: hidden;
+  height: 30px;  /* adjust based on your font-size */
+}
+
+.cd-headline.clip .cd-words-wrapper b {
+  transform: translateY(-100%);
+  top: 100%;
+}
+
+.cd-headline.clip .cd-words-wrapper .is-visible {
+  transform: translateY(0);
+  position: relative;
+  top: 0;
+}
+
+.cd-headline {
+  overflow: hidden;
+}
+
+.cd-words-wrapper {
+  display: inline-block;
+  white-space: nowrap;
+  position: relative;
+  overflow: hidden;
+}
+
+.cd-words-wrapper b {
+  display: inline-block;
+  position: absolute;
+  white-space: nowrap;
+  opacity: 0;
+  transition: opacity .2s;
+}
+
+.cd-words-wrapper b.is-visible {
+  opacity: 1;
+}
+
+
 /* rtl:raw:
 [type="tel"],
 [type="url"],
@@ -10974,3 +11033,9 @@ section.resume-section .resume-section-content {
     padding-bottom: 5rem;
   }
 }
+
+
+
+
+/* added for the title line */
+
