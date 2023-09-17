@@ -54,7 +54,7 @@
   --bs-dark-rgb: 33, 37, 41;
   --bs-white-rgb: 255, 255, 255;
   --bs-black-rgb: 0, 0, 0;
-  --bs-body-color-rgb: 33, 37, 41;
+  /* --bs-body-color-rgb: rgb(87, 197, 182); */
   --bs-body-bg-rgb: 255, 255, 255;
   --bs-font-sans-serif: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", "Noto Sans", "Liberation Sans", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
   --bs-font-monospace: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
@@ -63,7 +63,7 @@
   --bs-body-font-size: 1rem;
   --bs-body-font-weight: 400;
   --bs-body-line-height: 1.5;
-  --bs-body-color: #212529;
+  --bs-body-color: #24404b;  /* #212529; */
   --bs-body-bg: #fff;
   --bs-border-width: 1px;
   --bs-border-style: solid;
@@ -79,6 +79,7 @@
   --bs-link-hover-color: #002B5B;
   --bs-code-color: #d63384;
   --bs-highlight-bg: #fff3cd;
+  
 }
 
 *,
@@ -120,7 +121,7 @@ h6, .h6, h5, .h5, h4, .h4, h3, .h3, h2, .h2, h1, .h1 {
   font-family: "Saira Extra Condensed", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
   font-weight: 700;
   line-height: 1.2;
-  color: #343a40;
+  color: #496b91;
 }
 
 h1, .h1 {
@@ -170,6 +171,7 @@ h6, .h6 {
 p {
   margin-top: 0;
   margin-bottom: 1rem;
+  /* color: #598cb9 !important; */
 }
 
 abbr[title] {
@@ -320,7 +322,7 @@ table {
 caption {
   padding-top: 0.5rem;
   padding-bottom: 0.5rem;
-  color: #6c757d;
+  color: #159895;
   text-align: left;
 }
 
@@ -525,7 +527,7 @@ legend + * {
 
 ::file-selector-button {
   font: inherit;
-  -webkit-appearance: button;
+  /* -webkit-appearance: button; */
 }
 
 output {
@@ -2050,7 +2052,7 @@ progress {
 .form-text {
   margin-top: 0.25rem;
   font-size: 0.875em;
-  color: #6c757d;
+  color: #159895;
 }
 
 .form-control {
@@ -3064,7 +3066,7 @@ textarea.form-control-lg {
   --bs-btn-border-color: #6c757d;
   --bs-btn-hover-color: #fff;
   --bs-btn-hover-bg: #6c757d;
-  --bs-btn-hover-border-color: #6c757d;
+  --bs-btn-hover-border-color: #178df5;
   --bs-btn-focus-shadow-rgb: 108, 117, 125;
   --bs-btn-active-color: #fff;
   --bs-btn-active-bg: #6c757d;
@@ -10890,7 +10892,7 @@ RGBA(87, 197, 182 */
 }
 body {
   padding-top: 3.375rem;
-  color: #6c757d;
+  /* color: rgb(26, 95, 122); */
 }
 
 @media (min-width: 992px) {
