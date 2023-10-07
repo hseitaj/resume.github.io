@@ -224,32 +224,18 @@ const handleSubmit = (event) => {
         body: new URLSearchParams(formData).toString(),
     })
     .then(() => {
-        document.getElementById("alert-box").innerHTML = "Thank you for your submission";
-        document.getElementById("alert-box").className = "alert alert-success";
-        document.getElementById("alert-box").style.display = "block";
+        document.getElementById("form-message").innerHTML = "Thank you for your submission";
+        document.getElementById("form-message").className = "alert alert-success";
+        document.getElementById("form-message").style.display = "block";
     })
     .catch((error) => {
-        document.getElementById("alert-box").innerHTML = "An error occurred";
-        document.getElementById("alert-box").className = "alert alert-danger";
-        document.getElementById("alert-box").style.display = "block";
+        document.getElementById("form-message").innerHTML = "An error occurred";
+        document.getElementById("form-message").className = "alert alert-danger";
+        document.getElementById("form-message").style.display = "block";
     });
 };
 
 document.addEventListener('DOMContentLoaded', (event) => {
     const form = document.querySelector('#feedback-form');
-    
-    form.addEventListener('submit', function(e) {
-        e.preventDefault();
-        
-        fetch('/', {
-            method: 'POST',
-            body: new URLSearchParams(new FormData(form)).toString()
-        })
-        .then(() => {
-            alert('Form submission successful');
-        })
-        .catch(() => {
-            alert('Form submission failed');
-        });
-    });
+    form.addEventListener('submit', handleSubmit);
 });
