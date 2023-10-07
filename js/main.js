@@ -212,30 +212,34 @@ jQuery(document).ready(function($){
 	}
 });
 
-// Function to handle form submission and show alert
-const handleSubmit = (event) => {
-    event.preventDefault();
-    const myForm = event.target;
-    const formData = new FormData(myForm);
-
-    fetch("/", {
-        method: "POST",
-        headers: { "Content-Type": "application/x-www-form-urlencoded" },
-        body: new URLSearchParams(formData).toString(),
-    })
-    .then(() => {
-        document.getElementById("form-message").innerHTML = "Thank you for your submission";
-        document.getElementById("form-message").className = "alert alert-success";
-        document.getElementById("form-message").style.display = "block";
-    })
-    .catch((error) => {
-        document.getElementById("form-message").innerHTML = "An error occurred";
-        document.getElementById("form-message").className = "alert alert-danger";
-        document.getElementById("form-message").style.display = "block";
-    });
-};
-
 document.addEventListener('DOMContentLoaded', (event) => {
     const form = document.querySelector('#feedback-form');
-    form.addEventListener('submit', handleSubmit);
+    form.addEventListener('submit', function(e) {
+        e.preventDefault();
+
+        const formData = new FormData(form);
+        const formMessage = document.getElementById("form-message");
+
+        fetch("/", {
+            method: 'POST',
+            headers: { "Content-Type": "application/x-www-form-urlencoded" },
+            body: new URLSearchParams(formData).toString(),
+        })
+        .then((response) => {
+            if(response.ok) {
+                formMessage.innerHTML = "Thank you for your submission";
+                formMessage.className = "alert alert-success";
+                formMessage.style.display = "block";
+            } else {
+                formMessage.innerHTML = "An error occurred";
+                formMessage.className = "alert alert-danger";
+                formMessage.style.display = "block";
+            }
+        })
+        .catch((error) => {
+            formMessage.innerHTML = "An error occurred";
+            formMessage.className = "alert alert-danger";
+            formMessage.style.display = "block";
+        });
+    });
 });
