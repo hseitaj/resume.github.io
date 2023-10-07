@@ -246,10 +246,10 @@ document.addEventListener('DOMContentLoaded', (event) => {
             body: new URLSearchParams(new FormData(form)).toString()
         })
         .then(() => {
-            document.getElementById('statusMessage').textContent = 'Form submission successful';
+            alert('Form submission successful');
         })
         .catch(() => {
-            document.getElementById('statusMessage').textContent = 'Form submission failed';
+            alert('Form submission failed');
         });
     });
 });
