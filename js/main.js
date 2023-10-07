@@ -33,25 +33,28 @@
 
 
 document.addEventListener('DOMContentLoaded', (event) => {
-    const form = document.querySelector('#feedback-form');
-    
-    form.addEventListener('submit', function(e) {
-        e.preventDefault();
-        
-        fetch('/', {
-            method: 'POST',
-            headers: { "Content-Type": "application/x-www-form-urlencoded" },
-            body: new URLSearchParams(new FormData(form)).toString()
-        })
-        .then(() => {
-            document.getElementById("form-message").innerHTML = "Thank you for your submission";
-            document.getElementById("form-message").className = "alert alert-success";
-        })
-        .catch(() => {
-            document.getElementById("form-message").innerHTML = "An error occurred";
-            document.getElementById("form-message").className = "alert alert-danger";
-        });
-    });
+	const form = document.querySelector('#feedback-form');
+	
+	form.addEventListener('submit', function(e) {
+		e.preventDefault();
+		const formData = new FormData(form);
+
+		fetch("/", {
+			method: 'POST',
+			headers: { "Content-Type": "application/x-www-form-urlencoded" },
+			body: new URLSearchParams(formData).toString(),
+		})
+		.then(() => {
+			const formMessage = document.getElementById('form-message');
+			formMessage.innerHTML = "Thank you for your submission!";
+			formMessage.className = "alert alert-success";
+		})
+		.catch(() => {
+			const formMessage = document.getElementById('form-message');
+			formMessage.innerHTML = "An error occurred";
+			formMessage.className = "alert alert-danger";
+		});
+	});
 });
 
 
