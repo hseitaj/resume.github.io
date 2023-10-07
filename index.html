@@ -372,12 +372,10 @@
                 <h2 class="mb-5">Feedback</h2>
                 <div>
                     <p>If you have any thoughts or comments, I would love to hear from you. Your feedback is invaluable!</p>
-                    
                     <!-- Status Message -->
-                    <div id="form-message" class="alert" style="display:none;"></div> <!-- Line updated for showing message -->
-                    
+                    <div id="form-message"></div>
                     <!-- Form -->
-                    <form id="feedback-form" name="feedback-form" method="POST" data-netlify="true">
+                    <form id="feedback-form" name="feedback-form" method="POST" data-netlify="true" netlify-honeypot="bot-field">
                         <div class="form-group">
                             <label for="name">Name:</label>
                             <input type="text" class="form-control" id="name" name="name" required>
@@ -398,6 +396,7 @@
                 </div>
             </div>
         </section>
+        
         
         <!-- <hr class="m-0" /> -->
         <!-- Certifications -->
