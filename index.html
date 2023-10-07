@@ -373,9 +373,10 @@
                 <div>
                     <p>If you have any thoughts or comments, I would love to hear from you. Your feedback is invaluable!</p>
                     <!-- Status Message -->
-                    <div id="form-message"></div>
+                    <div id="form-message"></div> <!-- Line added for showing message -->
+                    
                     <!-- Form -->
-                    <form id="feedback-form" name="feedback-form" method="POST" data-netlify="true" netlify-honeypot="bot-field">
+                    <form id="feedback-form" name="feedback-form" method="POST" data-netlify="true">
                         <div class="form-group">
                             <label for="name">Name:</label>
                             <input type="text" class="form-control" id="name" name="name" required>
@@ -395,7 +396,35 @@
                     </form>
                 </div>
             </div>
+            <!-- JavaScript code -->
+            <script>
+                document.addEventListener('DOMContentLoaded', (event) => {
+                    const form = document.querySelector('#feedback-form');
+                    
+                    form.addEventListener('submit', function(e) {
+                        e.preventDefault();
+                        const formData = new FormData(form);
+        
+                        fetch("/", {
+                            method: 'POST',
+                            headers: { "Content-Type": "application/x-www-form-urlencoded" },
+                            body: new URLSearchParams(formData).toString(),
+                        })
+                        .then(() => {
+                            const formMessage = document.getElementById('form-message');
+                            formMessage.innerHTML = "Thank you for your submission!";
+                            formMessage.className = "alert alert-success";
+                        })
+                        .catch(() => {
+                            const formMessage = document.getElementById('form-message');
+                            formMessage.innerHTML = "An error occurred";
+                            formMessage.className = "alert alert-danger";
+                        });
+                    });
+                });
+            </script>
         </section>
+        
         
         
         <!-- <hr class="m-0" /> -->
