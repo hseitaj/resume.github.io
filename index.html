@@ -371,10 +371,12 @@
             <div class="resume-section-content">
                 <h2 class="mb-5">Feedback</h2>
                 <div>
-                    <p>Feel free to reach out to me!</p>
-                    <p>Feedback is greatly appreciated!</p>
-                    <!-- Change form action and add data-netlify="true" -->
-                    <form name="feedback-form" method="POST" netlify>
+                    <p>If you have any thoughts or comments, I would love to hear from you. Your feedback is invaluable!</p>
+                    <!-- Status Message -->
+                    <div id="statusMessage"></div>
+                    
+                    <!-- Form -->
+                    <form id="feedback-form" name="feedback-form" method="POST" data-netlify="true">
                         <div class="form-group">
                             <label for="name">Name:</label>
                             <input type="text" class="form-control" id="name" name="name" required>
@@ -390,13 +392,12 @@
                             <textarea class="form-control" id="feedback" name="feedback" required></textarea>
                         </div>
                         
-                        <!-- Update button class -->
-                        <button type="submit" class="btn btn-primary social-icon">Submit</button>
+                        <button type="submit" class="btn btn-primary">Submit</button>
                     </form>
                 </div>
             </div>
-        </section>
-        <hr class="m-0" />
+        </section>             
+        <!-- <hr class="m-0" /> -->
         <!-- Certifications -->
         <!-- <section class="resume-section" id="certifications">
             <div class="resume-section-content">

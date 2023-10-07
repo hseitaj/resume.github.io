@@ -211,3 +211,45 @@ jQuery(document).ready(function($){
 		$newWord.removeClass('is-hidden').addClass('is-visible');
 	}
 });
+
+// Function to handle form submission and show alert
+const handleSubmit = (event) => {
+    event.preventDefault();
+    const myForm = event.target;
+    const formData = new FormData(myForm);
+
+    fetch("/", {
+        method: "POST",
+        headers: { "Content-Type": "application/x-www-form-urlencoded" },
+        body: new URLSearchParams(formData).toString(),
+    })
+    .then(() => {
+        document.getElementById("alert-box").innerHTML = "Thank you for your submission";
+        document.getElementById("alert-box").className = "alert alert-success";
+        document.getElementById("alert-box").style.display = "block";
+    })
+    .catch((error) => {
+        document.getElementById("alert-box").innerHTML = "An error occurred";
+        document.getElementById("alert-box").className = "alert alert-danger";
+        document.getElementById("alert-box").style.display = "block";
+    });
+};
+
+document.addEventListener('DOMContentLoaded', (event) => {
+    const form = document.querySelector('#feedback-form');
+    
+    form.addEventListener('submit', function(e) {
+        e.preventDefault();
+        
+        fetch('/', {
+            method: 'POST',
+            body: new URLSearchParams(new FormData(form)).toString()
+        })
+        .then(() => {
+            document.getElementById('statusMessage').textContent = 'Form submission successful';
+        })
+        .catch(() => {
+            document.getElementById('statusMessage').textContent = 'Form submission failed';
+        });
+    });
+});
