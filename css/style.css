@@ -1,3 +1,133 @@
+/* Added CSS for the Toggle and Window toggle interaction */
+#wrapper {
+  display: flex;
+}
+
+#sidebarToggle {
+  position: fixed;
+  top: 0;
+  right: 0;
+  z-index: 1050;
+}
+
+#sideNav {
+  transition: transform 0.3s;
+  position: fixed;
+  top: 0;
+  left: 0;
+  padding-left: 16px;
+  padding-right: 16px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  width: 17rem;
+  height: 100vh;
+}
+
+.collapsed #sideNav {
+  transform: translateX(-100%);
+}
+
+#main-content {
+  transition: transform 0.3s; /* ensures smooth transition */
+  /* padding-left: 17rem; */
+}
+
+.content-shifted {
+  /* transform: translateX(17rem); moves content to the right */
+  transform: translateX(0); /* Adjusted to match the new padding-left value in #main-content */
+
+}
+
+.collapsed #main-content {
+  transform: none; /* reset transform when sidebar is collapsed */
+  padding-left: 0; /* Reset padding when sidebar is collapsed */
+
+}
+
+@media (max-width: 992px) {
+  #sidebarToggle {
+    display: none; /* Hide custom sidebar toggle */
+  }
+
+  .navbar-toggler {
+    position: fixed;
+    top: 1rem;
+    right: 1rem;
+    z-index: 1051; /* Adjust z-index to keep toggle above navbar */
+  }
+
+  #sideNav {
+    width: 100%;
+    height: auto;
+    transform: none;
+  }
+
+  .collapsed #sideNav {
+    transform: translateY(-100%);
+  }
+
+  .navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 0;
+  }
+
+  .navbar-collapse {
+    margin-left: 0; /* Reset margin-left */
+  }
+
+  .collapsed #main-content {
+    transform: none; /* reset transform when sidebar is collapsed */
+    padding-left: 0; /* Reset padding when sidebar is collapsed */
+  }
+}
+
+
+  #sidebar {
+      min-width: 250px;
+      max-width: 250px;
+      background: #7386D5;
+      color: #fff;
+      transition: all 0.6s cubic-bezier(0.945, 0.020, 0.270, 0.665);
+      transform-origin: center left;
+  }
+
+  #sidebar.active {
+      margin-left: -250px;
+      transform: rotateY(100deg);
+  }
+  /* @media (max-width: 768px) {
+      #sidebar {
+          margin-left: -250px;
+          transform: rotateY(100deg);
+      }
+      #sidebar.active {
+          margin-left: 0;
+          transform: none;
+      }
+      #sidebarCollapse span:first-of-type,
+      #sidebarCollapse span:nth-of-type(2),
+      #sidebarCollapse span:last-of-type {
+          transform: none;
+          opacity: 1;
+          margin: 5px auto;
+      }
+      #sidebarCollapse.active span {
+          margin: 0 auto;
+      }
+      #sidebarCollapse.active span:first-of-type {
+          transform: rotate(45deg) translate(2px, 2px);
+      }
+      #sidebarCollapse.active span:nth-of-type(2) {
+          opacity: 0;
+      }
+      #sidebarCollapse.active span:last-of-type {
+          transform: rotate(-45deg) translate(1px, -1px);
+      }
+  } */
+
 .cd-words-wrapper {
   display: inline-block;
   position: relative;
@@ -214,22 +344,22 @@ xtype
   transform: translateY(-50%);
   height: 90%;
   width: 1px;
-  background-color: #aebcb9;
+  /* background-color: #aebcb9; */
 }
 .cd-headline.type .cd-words-wrapper.waiting::after {
   -webkit-animation: cd-pulse 1s infinite;
   -moz-animation: cd-pulse 1s infinite;
   animation: cd-pulse 1s infinite;
 }
-.cd-headline.type .cd-words-wrapper.selected {
-  background-color: #aebcb9;
-}
+/* .cd-headline.type .cd-words-wrapper.selected {
+  /* background-color: #aebcb9; */
+/* } */ 
 .cd-headline.type .cd-words-wrapper.selected::after {
   visibility: hidden;
 }
-.cd-headline.type .cd-words-wrapper.selected b {
+/* .cd-headline.type .cd-words-wrapper.selected b {
   color: #0d0d0d;
-}
+} */
 .cd-headline.type b {
   visibility: hidden;
 }
@@ -683,7 +813,7 @@ xclip
   right: 0;
   width: 2px;
   height: 100%;
-  background-color: #aebcb9;
+  /* background-color: #aebcb9; */
 }
 .cd-headline.clip b {
   opacity: 0;

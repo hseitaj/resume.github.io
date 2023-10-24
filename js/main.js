@@ -31,28 +31,47 @@
 //   }
 // });
 
+document.addEventListener("DOMContentLoaded", () => {
+	const sidebarToggle = document.getElementById("sidebarToggle");
+	const wrapper = document.getElementById("wrapper");
+	const sideNav = document.getElementById("sideNav");
+	const mainContent = document.getElementById("main-content"); // Ensure this id matches the id of your main content element
 
-document.addEventListener('DOMContentLoaded', (event) => {
-	const form = document.querySelector('#feedback-form');
-	
-	form.addEventListener('submit', function(e) {
-		e.preventDefault();
-		const formData = new FormData(form);
+	if (sidebarToggle && wrapper && sideNav && mainContent) {
+	  sidebarToggle.addEventListener("click", () => {
+		const isCollapsed = wrapper.classList.toggle("collapsed");
+		sidebarToggle.classList.toggle("is-active");
+		sideNav.classList.toggle("collapsed");
+		if (isCollapsed) {
+		  mainContent.style.transform = "translateX(-8.5rem)"; // Default transform when sidebar is collapsed
+		} else {
+		  mainContent.style.transform = "translateX(0)"; // Adjusted transform when sidebar is expanded
+		}
+	  });
+	}
+  });
 
-		fetch("/", {
-			method: 'POST',
-			headers: { "Content-Type": "application/x-www-form-urlencoded" },
-			body: new URLSearchParams(formData).toString(),
-		})
+document.addEventListener("DOMContentLoaded", (event) => {
+	const form = document.querySelector("#feedback-form");
+
+	form.addEventListener("submit", function (e) {
+	e.preventDefault();
+	const formData = new FormData(form);
+
+	fetch("/", {
+		method: "POST",
+		headers: { "Content-Type": "application/x-www-form-urlencoded" },
+		body: new URLSearchParams(formData).toString(),
+	})
 		.then(() => {
-			const formMessage = document.getElementById('form-message');
-			formMessage.innerHTML = "Thank you for your submission!";
-			formMessage.className = "alert alert-success";
+		const formMessage = document.getElementById("form-message");
+		formMessage.innerHTML = "Thank you for your submission!";
+		formMessage.className = "alert alert-success";
 		})
 		.catch(() => {
-			const formMessage = document.getElementById('form-message');
-			formMessage.innerHTML = "An error occurred";
-			formMessage.className = "alert alert-danger";
+		const formMessage = document.getElementById("form-message");
+		formMessage.innerHTML = "An error occurred";
+		formMessage.className = "alert alert-danger";
 		});
 	});
 });
@@ -69,20 +88,65 @@ window.addEventListener('DOMContentLoaded', event => {
         });
     };
 
-    // Collapse responsive navbar when toggler is visible
-    const navbarToggler = document.body.querySelector('.navbar-toggler');
+	// Collapse responsive navbar when toggler is visible
+    const hamburger = document.body.querySelector('.hamburger');
     const responsiveNavItems = [].slice.call(
         document.querySelectorAll('#navbarResponsive .nav-link')
     );
     responsiveNavItems.map(function (responsiveNavItem) {
         responsiveNavItem.addEventListener('click', () => {
-            if (window.getComputedStyle(navbarToggler).display !== 'none') {
-                navbarToggler.click();
+            if (window.getComputedStyle(hamburger).display !== 'none') {
+                hamburger.click();
             }
         });
     });
 
+    // Toggle hamburger animation
+    hamburger.addEventListener('click', () => {
+        hamburger.classList.toggle('is-active');
+    });
+
+	// New code for handling nav link clicks
+    const navLinks = document.querySelectorAll('.nav-link');
+    navLinks.forEach(link => {
+        link.addEventListener('click', () => {
+            if (window.innerWidth < 992) {
+                // This assumes that your hamburger button has the class 'hamburger'
+                const hamburger = document.querySelector('.hamburger');
+                if (hamburger) {
+                    hamburger.click();
+                }
+            }
+        });
+    });
 });
+
+// Listen for window resize events
+window.addEventListener('resize', function() {
+	const sidebarToggle = document.getElementById('sidebarToggle');
+	const wrapper = document.getElementById('wrapper');
+	const sideNav = document.getElementById('sideNav');
+	const mainContent = document.getElementById('main-content'); // Ensure this id matches the id of your main content element
+	const width = window.innerWidth;
+  
+	if (width >= 992) {
+	  // Window width is greater than or equal to 992px
+	  if (wrapper.classList.contains('collapsed')) {
+		// If sidebar is collapsed, reset styles to default
+		wrapper.classList.remove('collapsed');
+		sidebarToggle.classList.remove('is-active');
+		sideNav.classList.remove('collapsed');
+		mainContent.style.transform = 'none';
+		// mainContent.style.paddingLeft = '17rem';
+	  }
+	  sidebarToggle.style.display = 'block'; // Show the custom sidebar toggle
+	} else {
+	  // Window width is less than 992px
+	  sidebarToggle.style.display = 'none'; // Hide the custom sidebar toggle
+	  mainContent.style.paddingLeft = '0'; // Reset padding-left
+	}
+  });
+  
 
 jQuery(document).ready(function($){
 	//set animation timing
