@@ -74,6 +74,21 @@ document.addEventListener("DOMContentLoaded", (event) => {
 		formMessage.className = "alert alert-danger";
 		});
 	});
+
+	const navLinks = document.querySelectorAll('.nav-link.js-scroll-trigger');
+    navLinks.forEach(link => {
+        link.addEventListener('click', () => {
+            const width = window.innerWidth;
+            if (width < 992) {
+                wrapper.classList.add('collapsed');
+                sidebarToggle.classList.remove('is-active');
+                sideNav.classList.add('collapsed');
+                mainContent.style.transform = 'none';
+                mainContent.style.paddingLeft = '1rem';  // Adjust padding to ensure content doesn't shift to the left
+            }
+        });
+    });
+
 });
 
 
