@@ -51,6 +51,17 @@ document.addEventListener("DOMContentLoaded", () => {
 	}
   });
 
+document.querySelectorAll(".carousel-item").forEach((item) => {
+	item.addEventListener("mouseover", function () {
+	const projectId = this.dataset.projectId;
+	const projectTitle = document.querySelector(
+		`#${projectId} strong`
+	).textContent;
+	this.querySelector(".carousel-caption h5").textContent =
+		projectTitle;
+	});
+});
+
 document.addEventListener("DOMContentLoaded", (event) => {
 	const form = document.querySelector("#feedback-form");
 

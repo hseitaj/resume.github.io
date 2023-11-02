@@ -84,6 +84,37 @@
   }
 }
 
+.carousel-item:hover .carousel-caption {
+  opacity: 1;
+}
+.carousel-caption {
+  opacity: 0;
+  transition: opacity 0.3s;
+  color: black; 
+}
+
+.carousel-item:hover .carousel-caption h5 a {
+  color: black !important;
+}
+
+
+.carousel-control-prev-icon:after,
+        .carousel-control-next-icon:after {
+            content: '';
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            background: no-repeat center center;
+            background-size: 100% 100%;
+        }
+
+        .carousel-control-prev-icon:after {
+            background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 8 8"><path d="M5.25 0l-4 4 4 4 1.5-1.5-2.5-2.5 2.5-2.5-1.5-1.5z" fill="%23000"/></svg>');
+        }
+
+        .carousel-control-next-icon:after {
+            background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 8 8"><path d="M2.75 0l-1.5 1.5 2.5 2.5-2.5 2.5 1.5 1.5 4-4-4-4z" fill="%23000"/></svg>');
+        }
 
   #sidebar {
       min-width: 250px;
