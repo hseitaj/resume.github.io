@@ -22,4 +22,5 @@ This project is licensed under the GPL-3.0 License. For more details, see the [L
 For questions, suggestions, or just to say hello:
 
 - **GitHub**: [@hseitaj](https://github.com/hseitaj)
+- **Linkedin**: [hansiseitaj](https://www.linkedin.com/in/hansiseitaj/)
 - **Website**: [hansiseitaj.com](https://hansiseitaj.com/)
